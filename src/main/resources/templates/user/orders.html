@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="navbar::layout(~{::body})">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-3">
+            <h6>Order id</h6>
+        </div>
+        <div class="col">
+            <span th:text="${order.id}"></span>
+        </div>
+    </div>
+    <div class="row" th:each="product : ${products}">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-3">
+            <a th:href="${'../../product/' + product.key.id}" th:text="${product.key.name}"></a>
+        </div>
+        <div class="col">
+            <span>Antal: <span th:text="${product.value}"></span></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-3">
+            <h6>Date:</h6>
+        </div>
+        <div class="col">
+            <span th:text="${order.date}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-3">
+            <h6>Shipped:</h6>
+        </div>
+        <div class="col" th:switch="${order.shipped}">
+            <span th:case="true">Yes</span>
+            <span th:case="false">No</span>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

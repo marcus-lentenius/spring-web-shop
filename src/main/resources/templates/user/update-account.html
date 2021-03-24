@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="navbar::layout(~{::body})">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+
+<form th:action="@{/user/update}" method="post" th:object="${user}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <h6>User name</h6>
+            </div>
+            <div class="col">
+                <h6 th:text="${user.userName}"></h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <h6>Password</h6>
+            </div>
+            <div class="col">
+                <input type="password"
+                       name="password"
+                       th:value="${user.password}"
+                       class="form-control" id="password"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <h6>Phone number</h6>
+            </div>
+            <div class="col">
+                <input type="text"
+                       class="form-control"
+                       name="phoneNumber"
+                       th:value="${user.phoneNumber}"
+                       id="phoneNumber">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <h6>Address</h6>
+            </div>
+            <div class="col">
+                <input type="text"
+                       class="form-control"
+                       name="address"
+                       th:value="${user.address}"
+                       id="address">
+                <input type="text"
+                       name="zipCode"
+                       th:value="${user.zipCode}"
+                       class="form-control" id="zipCode">
+                <input type="text"
+                       name="city"
+                       class="form-control" id="city"
+                       th:value="${user.city}"/>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Update</button>
+
+        </div>
+    </div>
+</form>
+</body>
+</html>

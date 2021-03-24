@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="navbar::layout(~{::body})">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+
+<div style="display: inline-block;">
+    <div class="card" style="width: 22rem; display: inline-block;">
+        <img class="card-img-top"
+             src="https://cdn.pixabay.com/photo/2016/10/31/18/25/yogurt-1786329_960_720.jpg"
+             height="300px"
+             alt="Card image cap">
+        <div class="card-body">
+                <h6 class="card-title" th:text="${product.name}">Card
+                    title</h6>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Price</td>
+                    <td><p th:text="${product.price}"></p></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td><p th:text="${product.category}"></p></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><p th:text="${product.description}"></p></td>
+                </tr>
+                </tbody>
+            </table>
+            <form th:action="@{/cart/add/}" method="post">
+                <input name="id" type="hidden" th:value="${product.id}">
+                <input name="amount" value="1" style="width: 30px">
+                <button type="submit" class="btn btn-primary" style="font-size: 14px;">Add to cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

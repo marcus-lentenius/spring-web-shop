@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="navbar::layout(~{::body})">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+<a th:href="${'/cart/clear'}">clear</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">+</th>
+        <th scope="col">Amount</th>
+        <th scope="col">-</th>
+        <th scope="col">Remove</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${cart}">
+<!--        <td><span th:text="${product.key.name}">namn</span></td>-->
+        <td>
+            <a th:href="${'../product/' + product.key.id}">
+                <span th:text="${product.key.name}">namn</span>
+            </a>
+        </td>
+        <td><a th:href="${'../user/cart/increment/' + product.key.id}">+</a></td>
+        <td><span th:text="${product.value}">antal</span></td>
+        <td><a th:href="${'../user/cart/decrement/' + product.key.id}">-</a></td>
+        <td><a th:href="${'../user/cart/delete/' + product.key.id}">Remove</a></td>
+        <td>
+            <span th:text="${product.key.price * product.value}"></span>:-
+            (<span th:text="${product.key.price}"></span>:- st)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p>total:<span th:text="${totalPrice}"></span></p>
+            <a th:href="${'../order/new'}">Lägg order</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
